@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCS Informática e Automação Comercial </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	
+    
+    <style>
+        :root {
+            --laranja-wcs: #F39200;
+            --preto-wcs: #000000;
+            --grafite-wcs: #1a1a1a;
+            --gdoor-red: #d32f2f;
+			.navbar-brand img {
+    max-height: 40px; /* Ajuste a altura conforme desejar */
+    margin-right: 10px;
+    width: auto;
+	/* Ajuste para o Feedback Card no Carrossel */
+.carousel-item .feedback-card {
+    border-left: none; /* Removemos a borda lateral */
+    border-top: 4px solid var(--laranja-wcs); /* Colocamos no topo para dar destaque */
+    margin: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1) sepia(100%) saturate(1000%) hue-rotate(0deg); /* Deixa as setas laranjas */
+}
+}
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--preto-wcs);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background-color: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--laranja-wcs);
+            padding: 15px 0;
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .badge-gdoor {
+            background-color: #fff;
+            color: var(--gdoor-red);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+            border: 2px solid var(--laranja-wcs);
+        }
+
+        .btn-primary-wcs {
+            background-color: var(--laranja-wcs);
+            color: white !important;
+            border: none;
+            padding: 15px 35px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .btn-primary-wcs:hover {
+            background-color: #ff9d0a;
+            transform: translateY(-3px);
+        }
+
+        .card-servico {
+            background-color: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 40px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .card-servico:hover { border-color: var(--laranja-wcs); background-color: #151515; }
+
+        .icon-box { color: var(--laranja-wcs); font-size: 2.5rem; margin-bottom: 20px; }
+
+        .gdoor-feature-card {
+            background: #151515;
+            padding: 25px;
+            border-radius: 15px;
+            border-bottom: 4px solid var(--laranja-wcs);
+            height: 100%;
+        }
+
+        .logo-parceiro {
+            filter: grayscale(100%) brightness(1.5);
+            opacity: 0.6;
+            transition: 0.3s;
+            max-height: 50px;
+        }
+
+        .logo-parceiro:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
+
+        .feedback-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid var(--laranja-wcs);
+        }
+
+        /* Footer Stylings */
+        footer h5 { color: var(--laranja-wcs); font-weight: bold; margin-bottom: 20px; }
+        footer .info-text { color: #ccc; font-size: 0.9rem; margin-bottom: 10px; text-decoration: none; display: block; }
+        footer .info-text i { color: var(--laranja-wcs); margin-right: 10px; width: 20px; }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s;
+        }
+        .social-links a:hover { color: var(--laranja-wcs); }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-decoration: none;
+        }
+
+        .text-orange { color: var(--laranja-wcs); }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="G:\land page wcs\imagens\wcs-transparente.png" alt="Logo WCS" style="max-height: 50px; margin-right: 12px;"> 
+                <div class="d-flex flex-column lh-1">
+                    <span class="fs-4"><span class="text-orange">WCS</span> INFORMÁTICA</span>
+                    <span style="font-size: 0.65rem; font-weight: 300; letter-spacing: 0.5px; color: #bbb; text-transform: uppercase; margin-top: 2px;">
+                        Assistência Técnica e Automação Comercial
+                    </span>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+					<li class="nav-item"><a class="nav-link" href="#delivery">Leva e Traz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gdoor">Gdoor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Depoimentos</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="https://wa.me/5584996172882" class="btn btn-primary-wcs btn-sm text-white">Orçamento Grátis</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge-gdoor shadow-lg">
+                <i class="fas fa-certificate me-2"></i> Revenda Autorizada Gdoor Zucchetti
+            </div>
+            <h1 class="display-3 fw-bold mb-4">Tecnologia que <span class="text-orange">Impulsiona</span> seu Negócio.</h1>
+            <p class="lead mb-5 text-light mx-auto" style="max-width: 800px;">Assistência técnica especializada em Manutenção de Notebooks, Computadores e sistemas de automação comercial.</p>
+            <a href="https://wa.me/558499172882" class="btn btn-primary-wcs btn-lg">Falar com Especialista</a>
+        </div>
+    </section>
+	
+	<section id="delivery" class="py-5" style="background: linear-gradient(90deg, #111 0%, #1a1a1a 100%); border-top: 1px solid #333;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center">
+                    <img src="G:\land page wcs\imagens\deliverywcs.jpeg" alt="Serviço de Coleta WCS" class="img-fluid rounded-4 shadow-lg" style="max-height: 350px; border: 2px solid var(--laranja-wcs);">
+                </div>
+                
+                <div class="col-lg-7 ps-lg-5">
+                    <h2 class="fw-bold mb-3">Comodidade <span class="text-orange">WCS</span>: Leva e Traz</h2>
+                    <p class="lead text-light">Não pode vir até nós? Nós vamos até você!</p>
+                    <p class="text-secondary">Retiramos seu equipamento (computador, notebook) no conforto da sua casa ou empresa com total segurança e agilidade. Após o conserto, entregamos tudo testado e pronto para uso.</p>
+                    
+                    <div class="d-flex align-items-center mt-4 p-3 rounded-3" style="background: rgba(243, 146, 0, 0.1); border-left: 4px solid var(--laranja-wcs);">
+                        <i class="fas fa-motorcycle fa-2x text-orange me-3"></i>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Consulte sua região</h6>
+                            <small class="text-muted">Serviço disponível para Natal e áreas próximas.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="https://api.whatsapp.com/send/?phone=5584996172882&text&type=phone_number&app_absent=0 class="btn btn-primary-wcs">Solicitar Coleta Agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossas <span class="text-orange">Soluções</span></h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="card-servico">
+                        <div class="icon-box"><i class="fas fa-tools"></i></div>
+                        <h4>Assistência Técnica</h4>
+                        <p class="text-secondary">Manutenção preventiva e corretiva em computadores e Notebooks. 
+						Vendas de equipamentos e peças.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-servico">
+                        <div class="icon-box"><i class="fas fa-cash-register"></i></div>
+                        <h4>Automação Comercial</h4>
+                        <p class="text-secondary">Sistemas Gdoor Zucchetti completos para gestão de vendas, estoque e notas fiscais.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-servico">
+                        <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                        <h4>Redes Estruturadas</h4>
+                        <p class="text-secondary">Conectividade estável e segura para garantir a produtividade da sua equipe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gdoor" class="py-5" style="background-color: #0a0a0a;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Sistemas <span style="color: var(--gdoor-orange mb-3);">Gdoor Zucchetti</span></h2>
+                <p class="text-secondary">Soluções de gestão para o varejo braslileiro.</p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="gdoor-feature-card">
+                        <i class="fas fa-bolt text-orange mb-3 fs-2"></i>
+                        <h5>PDV Ultra-Rápido</h5>
+                        <p class="small text-secondary">Venda com rapidez e eficiência. Homologado para todas as exigências fiscais.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gdoor-feature-card">
+                        <i class="fas fa-file-invoice-dollar text-orange mb-3 fs-2"></i>
+                        <h5>Fiscal Descomplicado</h5>
+                        <p class="small text-secondary">Emissão de NF-e e NFC-e integrada ao seu fluxo de trabalho diário.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gdoor-feature-card">
+                        <i class="fas fa-mobile-alt text-orange mb-3 fs-2"></i>
+                        <h5>Gestão Remota</h5>
+                        <p class="small text-secondary">Veja o desempenho da sua loja em tempo real direto do seu smartphone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-black">
+        <div class="container text-center">
+            <p class="text-muted small text-uppercase mb-4">Empresas Parceiras</p>
+            <div class="row justify-content-center align-items-center g-5">
+                <div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\mega20 trensparente.png" class="logo-parceiro img-fluid"></div>
+                <div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\monte_santo-transparente.png" class="logo-parceiro img-fluid"></div>
+                <div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\dona_batata-removebg-transparente.png" class="logo-parceiro img-fluid"></div>
+                <div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\bicletaria-barsil-transparente.png" class="logo-parceiro img-fluid"></div>
+				<div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\candida_store-removebg-transparente.png" class="logo-parceiro img-fluid"></div>
+				<div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\flordocampo-transparente.png" class="logo-parceiro img-fluid"></div>
+				<div class="col-6 col-md-2"><img src="G:\land page wcs\imagens\mega2025-removebg-preview.png" class="logo-parceiro img-fluid"></div>
+				
+            </div>
+        </div>
+    </section>
+
+    <<section id="feedback" class="py-5" style="background-color: #0d0d0d;">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">O que dizem nossos <span class="text-orange">Clientes</span></h2>
+                <p class="text-secondary">A confiança de quem utiliza nossos serviços e soluções da WCS Informática.</p>
+            </div>
+
+            <div id="carouselDepoimentos" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="feedback-card text-center">
+                                    <div class="mb-3 text-orange">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="fs-5 italic text-light mb-4">"Atendimento 100% especializado, avaliação e atenção ao cliente, super recomendo, serviços de alta qualidade!."</p>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="G:\land page wcs\imagens\silvanete.jpeg" alt="Foto Cliente" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover; border: 2px solid var(--laranja-wcs);">
+                                        <div class="text-start">
+                                            <h6 class="mb-0 text-orange fw-bold">Silvante Macedo</h6>
+                                            <small class="text-muted">Estudante de fisica</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="feedback-card text-center">
+                                    <div class="mb-3 text-orange">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="fs-5 italic text-light mb-4">"Trabalho impecável, recomendo demais.
+Sempre que preciso de algo no meu PC corro para da WCS informática."</p>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="G:\land page wcs\imagens\cliente.jpeg" alt="Foto Cliente" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover; border: 2px solid var(--laranja-wcs);">
+                                        <div class="text-start">
+                                            <h6 class="mb-0 text-orange fw-bold">Lucivania</h6>
+                                            <small class="text-muted">Autonoma</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="carousel-item" data-bs-interval="5000">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="feedback-card text-center">
+                                    <div class="mb-3 text-orange">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="fs-5 italic text-light mb-4">"Pela primeira vez tive a oportunidade de conhecer o trabalho desse grande profissional, e posso afirmar que ele superou as minhas expectativas 👏🏼👏🏼👏🏼Parabéns!!."</p>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="G:\land page wcs\imagens\Maria Lidijane.jpeg" alt="Foto Cliente" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover; border: 2px solid var(--laranja-wcs);">
+                                        <div class="text-start">
+                                            <h6 class="mb-0 text-orange fw-bold">Maria Lidijane</h6>
+                                            <small class="text-muted">bacharela em sisttemas da informação/small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="feedback-card text-center">
+                                    <div class="mb-3 text-orange">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="fs-5 italic text-light mb-4">"Profissional sério, competente e com preço justo."</p>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="G:\land page wcs\imagens\mercia.jpeg" alt="Foto Cliente" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover; border: 2px solid var(--laranja-wcs);">
+                                        <div class="text-start">
+                                            <h6 class="mb-0 text-orange fw-bold">Mercia</h6>
+                                            <small class="text-muted">Advogada</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+
+                <div class="carousel-indicators" style="position: relative; margin-top: 30px;">
+                    <button type="button" data-bs-target="#carouselDepoimentos" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#carouselDepoimentos" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carouselDepoimentos" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section id="onde-estamos" class="py-5 bg-black">
+        <div class="container py-5 text-center">
+            <div class="mb-5">
+                <h2 class="fw-bold">Onde <span class="text-orange">Estamos</span></h2>
+                <p class="text-secondary">Venha nos visitar ou traga seu equipamento.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="map-container shadow-lg" style="position: relative; width: 100%; height: 400px; border: 2px solid #1a1a1a; border-radius: 15px; overflow: hidden;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.581896174776!2d-35.2587522!3d-5.7731998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2f026a0901e85%3A0x6a090a21643c5188!2sAv.%20Boa%20Sorte%2C%20602%20-%20Nossa%20Sra.%20da%20Apresenta%C3%A7%C3%A3o%2C%20Natal%20-%20RN!5e0!3m2!1spt-BR!2sbr!4v1700000000000" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p class="fs-5 text-light">
+                            <i class="fas fa-map-marker-alt text-orange me-2"></i>
+                            Av. Boa sorte, 602, Nsa da Apresentação, Natal - RN
+                        </p>
+                        <a href="https://www.google.com/maps/dir//Av.+Boa+sorte,+602+-+Nossa+Sra.+da+Apresentação,+Natal+-+RN" target="_blank" class="btn btn-outline-warning btn-sm mt-2">
+                            <i class="fas fa-directions me-2"></i>Como Chegar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-5 bg-black" style="border-top: 1px solid #222;">
+        <div class="container">
+            <div class="row g-4 mb-5 text-start">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold text-orange mb-3">WCS INFORMÁTICA</h4>
+                    <p class="text-secondary small">Especialistas em automação comercial e assistência técnica de informática. Levamos eficiência e segurança para o seu negócio em Natal e região.</p>
+                    <div class="social-links mt-3">
+                        <a href="https://www.instagram.com/wcsinforn?igsh=MTU0dWJ1NG84YnNv"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send/?phone=5584996172882&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5><i class="far fa-clock me-2"></i>Horários</h5>
+                    <div class="info-text"><strong>Segunda a Sexta:</strong> 08:30 às 17:30</div>
+                    <div class="info-text"><strong>Sábado:</strong> 08:00 às 12:00</div>
+                    <div class="info-text text-danger"><strong>Domingos e Feriados:</strong> Fechado</div>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5><i class="far fa-envelope me-2"></i>Contato</h5>
+                    <a href="mailto:wcsinformatica.automacao@gmail.com" class="info-text">
+                        <i class="fas fa-at"></i> wcsinformatica.automacao@gmail.com
+                    </a>
+                    <div class="info-text">
+                        <i class="fas fa-map-marker-alt"></i> Av. Boa sorte, 602, Nsa da apresentação, Natal-RN
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary">
+
+            <div class="row py-3 align-items-center">
+                <div class="col-md-12 text-center">
+                    <p class="small text-muted mb-1">Desenvolvido pela <strong>WCS Informática e Automação Comercial</strong>.</p>
+                    <p class="small text-muted mb-0">© 2026 Todos os direitos reservados a <strong>WCS Informática e Automação</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5584996172882" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

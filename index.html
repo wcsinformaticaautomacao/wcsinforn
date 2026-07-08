@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCS Informática e Assistência Técnica</title>
+    <style>
+        /* CORES EXTRAÍDAS DO LOGOTIPO: Tons de azul escuro, azul médio e branco */
+        :root {
+            --bg-dark: #070d19;
+            --bg-card: #0f1b35;
+            --primary-blue: #0046ad;
+            --light-blue: #0072ff;
+            --text-white: #ffffff;
+            --text-gray: #a0aec0;
+            --whatsapp-green: #25d366;
+            --whatsapp-hover: #20ba5a;
+        }
+/* Garante que os cards fiquem alinhados verticalmente mesmo com textos de tamanhos diferentes */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de levitar e acender o card ao passar o mouse */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 230, 118, 0.15); /* Uma leve sombra verde combinando com o botão */
+}
+
+/* Efeito de mudança de cor no botão do card */
+.btn-service:hover {
+    background: #00b359 !important; /* Escurece um pouco o verde do botão no hover */
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER (Sem links de navegação adicionais para eliminar distrações) */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--light-blue);
+            font-size: 16px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-gray);
+            margin-top: -2px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 0 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 74, 173, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 24px;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* BOTÃO CTA ÚNICO COM EFEITO PULSANTE */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 38px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ESCUDO DA CONFIANÇA */
+        .trust-section {
+            background-color: var(--bg-card);
+            padding: 35px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .trust-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            fill: var(--light-blue);
+        }
+
+        .trust-text h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .trust-text p {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* SEÇÕES DE CONTEÚDO */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--light-blue);
+            margin: 15px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* CARDS DE SERVIÇOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 114, 255, 0.3);
+        }
+
+        .service-card svg {
+            width: 45px;
+            height: 45px;
+            fill: var(--light-blue);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+           /* AJUSTE DE CONVERSÃO: Estilo dos botões individuais dos serviços */
+         .btn-service {
+          display: block;
+          text-align: center;
+           background-color: var(--whatsapp-green) !important;
+         color: #fff !important;
+          padding: 12px 20px;
+           border-radius: 8px;
+           text-decoration: none;
+           font-weight: 700;
+          margin-top: auto; /* Empurra o botão sempre para o final do card, mantendo o alinhamento perfeito */
+          transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-service:hover {
+    background-color: var(--whatsapp-hover) !important;
+    transform: scale(1.02); /* Dá um leve zoom ao passar o rato, estimulando o clique */
+}
+        /* PROVA SOCIAL */
+        .testimonials {
+            background: rgba(15, 27, 53, 0.4);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .stars {
+            color: #ffb400;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .testimonial-card p {
+            font-size: 14px;
+            font-style: italic;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .client-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .client-meta h4 { font-size: 14px; font-weight: 700; }
+        .client-meta span { font-size: 12px; color: var(--text-gray); display: block; }
+
+        /* COMO FUNCIONA */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .step-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.01);
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 15px rgba(0, 74, 173, 0.4);
+        }
+
+        /* FAQ */
+        .faq-max { max-width: 750px; margin: 0 auto; }
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+        }
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #040810;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-cta { margin-bottom: 40px; }
+        .footer-cta p { font-size: 16px; margin-bottom: 20px; color: #fff; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            .hero p { font-size: 15px; }
+            .cta-btn { width: 100%; justify-content: center; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <div class="logo-circle">WCS</div>
+                <div class="logo-text">
+                    WCS INFORMÁTICA
+                    <span>Informática e Assistência Técnica</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Seu computador ou notebook novo de novo, sem risco de perder seus arquivos e com garantia total.</h1>
+            <p>Assistência técnica especializada , manutenção em computador , notebook e sistemas comerciais. Deixe seu equipamento com quem protege seus dados e resolve o problema rápido.</p>
+            <a href="https://wa.me/558499172882?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico." class="cta-btn" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.516 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.488 5.353 1.489 5.525 0 10.018-4.467 10.021-9.96.001-2.659-1.03-5.159-2.904-7.034C17.245 1.774 14.752.743 12.01.743 6.486.743 1.993 5.21 1.99 10.704c-.001 2.145.57 4.2 1.655 5.86l-.997 3.645 3.73-.978zm13.71-7.142c-.3-.15-1.77-.874-2.046-.975-.276-.102-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-1.204-.602-1.986-1.058-2.778-2.414-.207-.356-.004-.549.147-.7c.135-.135.3-.35.45-.525.148-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.628-.926-2.227-.244-.587-.492-.507-.676-.516-.174-.008-.375-.01-.575-.01-.2 0-.525.075-.8.376-.276.3-.1.525.1.75.1.2.1.2 0 .4-.2.15-1.05 1.05-1.05 2.55s1.1 2.95 1.25 3.15c.15.2 2.145 3.276 5.198 4.59.727.312 1.293.5 1.735.64.73.23 1.39.198 1.916.12.583-.087 1.77-.724 2.02-1.425.25-.7.25-1.3.175-1.425-.075-.125-.275-.2-.575-.35z"/></svg>
+                Agendar Diagnóstico Gratuito Via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 1l-10 4v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12v-6l-10-4zm-2 16l-4-4 1.41-1.41 2.59 2.58 6.59-6.59 1.41 1.42-8 8z"/></svg>
+                    <div class="trust-text">
+                        <h3>Backup e Dados 100% Seguros</h3>
+                        <p>Garantimos a integridade de todas as suas fotos, senhas e arquivos.</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2,-2,-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                    <div class="trust-text">
+                        <h3>Orçamento Transparente</h3>
+                        <p>Você aprova o valor antes de qualquer início de reparo técnico.</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm3.36 15.3L11 13V7h1.5v5.25l3.62 2.16-.77 1.89z"/></svg>
+                    <div class="trust-text">
+                        <h3>Agilidade e Garantia</h3>
+                        <p>Seu equipamento pronto no menor tempo e com garantia em contrato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <<!-- SERVIÇOS E ESPECIALIDADES -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Nossos serviços</h2>
+			 <p style="text-align: center; color: #a0aec0; margin-top: -20px; margin-bottom: 40px;">Soluções rápidas, transparentes e com garantia para o seu equipamento.</p>
+            <div class="services-grid">
+                
+                <!-- CARD 1: Upgrade de Desempenho -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\ssderam.png" alt="Upgrade de Desempenho" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Upgrade de Desempenho</h3>
+                    <p>Instalação de SSD e aumento de memória RAM para deixar seu computador ou notebook até 10x mais rápido.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 2: Higienização e Limpeza -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\higienizacao.png" alt="Higienização e Limpeza Interna" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Higienização Interna</h3>
+                    <p>Limpeza técnica profunda e troca de pasta térmica para evitar superaquecimento e prolongar a vida útil do equipamento.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 3: Diagnóstico Certo -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\analise.png" alt="Diagnóstico Certo" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Diagnóstico Certo</h3>
+                    <p>Análise técnica detalhada e precisa para identificar a real causa do problema, sem achismos e com total transparência.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 4: Troca de Bateria -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\trocadebateria.png" alt="Troca de Bateria" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Troca de Bateria</h3>
+                    <p>Substituição de baterias viciadas ou estufadas de notebooks por componentes novos e com garantia de autonomia.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 5: Tela Quebrada -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\tela.png" alt="Troca de Tela Quebrada" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Troca de Tela</h3>
+                    <p>Substituição rápida de telas trincadas, com linhas ou sem imagem, utilizando peças de alta qualidade.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 6: Troca de Peças -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\peças.png" alt="Troca de Peças" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Troca de Peças</h3>
+                    <p>Substituição de teclados, coolers, conectores de carga (jack), fontes e placas danificadas.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 7: Reparo de Carcaça -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\carcaca.png" alt="Reparo de Carcaça" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Reparo de Carcaça e Dobradiças</h3>
+                    <p>Reconstrução e reforço de carcaças quebradas ou dobradiças travadas, evitando que o notebook piore ao abrir.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+                <!-- CARD 8: Sistema Operacional -->
+                <div class="service-card">
+                    <img src="D:\wcsinforn\imagens\sistema.png" alt="Sistema Operacional" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>Sistema Operacional</h3>
+                    <p>Formatação, instalação e configuração de Windows ou Linux com backup seguro de todos os seus arquivos pessoais.</p>
+					<a href="https://wa.me/5584996172882?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20Upgrade%20de%20Desempenho." class="btn-service" style="display: block; text-align: center; background: #00e676; color: #fff; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 0.9rem;">Fazer Orçamento</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding testimonials">
+        <div class="container">
+            <h2 class="section-title">Quem Já Confia no Nosso Trabalho</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Levei meu notebook de trabalho que não ligava por nada. Fizeram o diagnóstico rápido, mantiveram todos os meus arquivos e o atendimento foi excelente e transparente."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">RC</div>
+                        <div class="client-meta">
+                            <h4>Ricardo C.</h4>
+                            <span>Cliente local</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Instalamos o sistema de automação comercial na minha loja e o suporte pós-venda deles é excelente. Muito ágeis e prestativos."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MS</div>
+                        <div class="client-meta">
+                            <h4>Maria S.</h4>
+                            <span>Lojista</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"IRealizei um reparo de dobradiça do meu notebook Acer e deu tudo certo! Faz 1 mês do serviço e não tenho o que reclamar. Ótimo profissional, muito atencioso.."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MS</div>
+                        <div class="client-meta">
+                            <h4>Fernanda fonseca</h4>
+                            <span>estudante</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"trabalho impecavel,recomendo demais. sempre que preciso de algo no meu pc corro para Willian da wcs informatica."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MS</div>
+                        <div class="client-meta">
+                            <h4>Lucivania Lima</h4>
+                            <span>empreendora</span>
+                        </div>
+                    </div>
+                </div>
+				
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Como Funciona o Processo</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Contato Inicial</h3>
+                    <p>Clique no botão e fale connosco pelo WhatsApp descrevendo o problema do aparelho.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Avaliação</h3>
+                    <p>Avaliamos o equipamento em nossa bancada de testes e enviamos o orçamento detalhado.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Reparo e Entrega</h3>
+                    <p>Após a sua aprovação, executamos o reparo de forma rápida e segura com direito a garantia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container faq-max">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Vou perder os meus ficheiros e dados no conserto?</div>
+                <div class="faq-answer">Não! O nosso primeiro passo operacional em qualquer manutenção é proteger e isolar os seus dados, garantindo privacidade e total segurança.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Quanto tempo demora a análise técnica?</div>
+                <div class="faq-answer">Geralmente analisamos e entramos em contacto com o orçamento detalhado em poucas horas após a recepção do equipamento.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Os serviços possuem garantia?</div>
+                <div class="faq-answer">Sim! Todas as nossas manutenções de hardware e upgrades de peças acompanham garantia expressa e em conformidade técnica.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <p>Proteja os seus dados e garanta a performance certa para a sua máquina hoje.</p>
+                <a href="https://wa.me/5584996172882?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico." class="cta-btn" target="_blank">
+                    Falar com Especialista e Agendar Agora
+                </a>
+            </div>
+            <p>&copy; 2026 WCS Informática e Automação Comercial. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
